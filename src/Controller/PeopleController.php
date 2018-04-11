@@ -24,7 +24,7 @@ class PeopleController extends AbstractController
      * @Route("/validate/{element}", name="validatePerson")
      * @Method({"POST"})
      */
-    public function validate(string $element)
+    public function validate($element)
     {
         switch ($element) {
             case 'name':

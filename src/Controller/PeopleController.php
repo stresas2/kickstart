@@ -33,9 +33,10 @@ class PeopleController extends AbstractController
             return new JsonResponse(['error' => 'Invalid method'], Response::HTTP_BAD_REQUEST);
         }
 
+        $students = $this->getStudents();
         switch ($element) {
             case 'name':
-                return new JsonResponse(['valid' => true, 'input' => $input]);
+                return new JsonResponse(['valid' => in_array(strtolower($input), $students)]);
         }
 
         return new JsonResponse(['error' => 'Invalid method'], Response::HTTP_BAD_REQUEST);

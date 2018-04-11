@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -35,5 +34,78 @@ class PeopleController extends AbstractController
         }
 
         return new JsonResponse(['error' => 'Invalid method'], Response::HTTP_BAD_REQUEST);
+    }
+
+    private function getStorage()
+    {
+        return /** @lang json */
+        '{
+          "nedarykpats": {
+            "name": "Nedaryk pats",
+            "mentors": [
+              "Laurynas"
+            ],
+            "students": [
+              "Martyna",
+              "Aurimas",
+              "Vilius"
+            ]
+          },
+          "savanoryste": {
+            "name": "Car booking",
+            "mentors": [
+              "Tomas"
+            ],
+            "students": [
+              "Ignas",
+              "Dovydas",
+              "Darius"
+            ]
+          },
+          "curlybrackets": {
+            "name": "Maisto dalinimosi sistema",
+            "mentors": [
+              "Paulius"
+            ],
+            "students": [
+              "Roman",
+              "Marijus",
+              "Angelika"
+            ]
+          },
+          "hobby": {
+            "name": "Hobby",
+            "mentors": [
+              "Ieva"
+            ],
+            "students": [
+              "Miroslav",
+              "Viktoras",
+              "Lukas"
+            ]
+          },
+          "hack<b>er</b>\'is po .mySubdomain &project=123": {
+            "name": "\' OR 1 -- DROP DATABASE",
+            "mentors": [
+              "<b>Ponas</b> Programišius"
+            ],
+            "students": [
+              "Aurelijus Banelis",
+              "<b>Ir</b> jo \"geras\" draug\'as"
+            ]
+          }
+        }';
+    }
+
+    private function getStudents(): array
+    {
+        $students = [];
+        $storage = json_decode($this->getStorage(), true);
+        foreach ($storage as $teamData) {
+            foreach ($teamData['students'] as $student) {
+                $students[] = $student;
+            }
+        }
+        return $students;
     }
 }

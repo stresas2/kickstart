@@ -3,7 +3,7 @@
 let name = document.getElementById('name');
 let validationResult = document.getElementById('validation-result');
 const validateName = function () {
-    validationResult.innerText = 'Įrašėte: ' + name.value;
+    validationResult.innerText = 'Validuosiu su: ' + validationResult.dataset.path;
 };
 
 name.onkeyup = validateName;

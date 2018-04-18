@@ -70,6 +70,11 @@ scripts/stop.sh
 scripts/install-dev.sh
 ```
 
+* Pasikeisti naudotojo teises:
+```bash
+scripts/backend.sh bin/console fos:user:promote
+```
+
 * Jei norite pridėti PHP biblioteką arba dirbti su Symfony karkasu per komandinę eilutę:
 ```bash
 scripts/backend.sh

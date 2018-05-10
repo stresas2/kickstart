@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\FeedbackMessage;
 use App\Form\FeedbackForm;
+use App\Services\TopicIndicator;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Annotation\Route;
@@ -41,11 +42,12 @@ class FeedbackController extends Controller
     /**
      * @Route("/feedback/conversation", name="feedback_conversation")
      */
-    public function conversation(Session $session)
+    public function conversation(Session $session, TopicIndicator $indicator)
     {
         $message = $session->get(self::LAST_FEEDBACK_MESSAGE, '');
         return $this->render('feedback/results.html.twig', [
-            'feedback' => $message
+            'feedback' => $message,
+            'topic' => $indicator->getTopic($message),
         ]);
     }
 }

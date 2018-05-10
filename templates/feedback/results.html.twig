@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Feedback{% endblock %}
+
+{% block body %}
+    <div class="feedback-results">
+        <div class="question">
+            {{ feedback }}
+        </div>
+
+        <div class="answer">
+            Thank you for your feedback
+        </div>
+    </div>
+
+    <div class="navigation">
+        <a href="{{ path('home') }}">&larr; Home page</a>
+    </div>
+{% endblock %}

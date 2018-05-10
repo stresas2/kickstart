@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    Redirecting...
+    <script type="text/javascript">
+        document.location = '{{ url }}'
+    </script>
+    <noscript>
+        <a href="{{ url }}">Go now</a>
+    </noscript>
+{% endblock %}

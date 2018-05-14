@@ -3,6 +3,8 @@
 NFQ Akademija
 ============
 
+Paskaitos medžiaga
+
 # Intro
 
 Sveiki! Tai yra Jūsų startinis projekto "template". 

@@ -199,6 +199,21 @@ Slaptažodžiui naudoti `p9iijKcfgENjBWDYgSH7`
         * Protocol: `VNC`
         * Password: `secret`
 
+* Paleidžiame testus iš `php.symfony` konteinerio.
+Pasiruošiame aplinką:
+    ```
+    docker exec -it php.symfony bash
+    ```
+    ```
+    cd acceptance-tests/
+    composer install
+    ```
+    
+    Pats testų paleidimas:
+    ```
+    vendor/bin/codecept run --debug
+    ```
+
 Kadangi testus leidžiame per _docker_'į, tai reikėtų nesumaišyti:
     * kur paleidiama tiesiog iš savo kompiuterio (adresai `127.0.0.1`),
     * kur iš konteinerių vidaus (tada adresai yra kitų konteinerių pavadinimai)

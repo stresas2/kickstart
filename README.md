@@ -1,6 +1,6 @@
 ![](https://avatars0.githubusercontent.com/u/4995607?v=3&s=100)
 
-Mokomoji medžiaga NFQ akademijos paskaitai
+Mokomoji medžiaga NFQ akademijos paskaitai 2018-05-22
 ==========================================
 
 Paskaitos medžiaga

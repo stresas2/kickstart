@@ -9,4 +9,8 @@
             <p>By {{ post.user.username }} at {{ post.date|date('Y-m-d') }}</p>
         </div>
     {% endfor %}
+
+    <div>
+        <a href="{{ path('home') }}">Back to home</a>
+    </div>
 {% endblock %}

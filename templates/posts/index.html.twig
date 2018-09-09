@@ -1,5 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    Here will be posts
+    {% for post in posts %}
+        <div class="jumbotron">
+            <h2 class="display-4">{{ post.title }}</h2>
+            <p class="lead">{{ post.content }}</p>
+            <hr class="my-4">
+            <p>By {{ post.user.username }} at {{ post.date|date('Y-m-d') }}</p>
+        </div>
+    {% endfor %}
 {% endblock %}

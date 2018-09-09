@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 class PostsController extends Controller
 {
@@ -20,8 +21,12 @@ class PostsController extends Controller
     /**
      * @Route("/posts/new", name="new_posts")
      */
-    public function newPost()
+    public function newPost(UserInterface $user = null)
     {
-        return $this->render('posts/new.html.twig');
+        if (!$user) {
+            return $this->redirectToRoute('fos_user_security_login');
+        }
+
+        return $this->render('posts/new.html.twig', ['user' => $user]);
     }
 }

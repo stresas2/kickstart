@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
-use Symfony\Component\Routing\Annotation\Route;
+use App\Entity\Post;
+use App\Form\PostType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 class PostsController extends Controller
@@ -27,6 +29,9 @@ class PostsController extends Controller
             return $this->redirectToRoute('fos_user_security_login');
         }
 
-        return $this->render('posts/new.html.twig', ['user' => $user]);
+        $user = new Post('', new \DateTime(), '', $user);
+        $form = $this->createForm(PostType::class, $user);
+
+        return $this->render('posts/new.html.twig', ['form' => $form->createView()]);
     }
 }

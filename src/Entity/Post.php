@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PostRepository")
@@ -35,6 +36,22 @@ class Post
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="users")
      */
     private $user;
+
+    /**
+     * Post constructor.
+     * @param $title
+     * @param $date
+     * @param $content
+     * @param $user
+     */
+    public function __construct($title, $date, $content, UserInterface $user)
+    {
+        $this->title = $title;
+        $this->date = $date;
+        $this->content = $content;
+        $this->user = $user;
+    }
+
 
     public function getId()
     {

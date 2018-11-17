@@ -18,6 +18,6 @@
         var usingVersionedFileJs = true;
         var usingReactApp = true;
     </script>
-    <script src="{{ asset('build/js/validation.js') }}"></script>
+    {{ encore_entry_script_tags('js/validation') }}
     {{ parent() }}
 {% endblock %}

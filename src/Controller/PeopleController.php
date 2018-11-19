@@ -45,72 +45,73 @@ class PeopleController extends AbstractController
     private function getStorage()
     {
         return /** @lang json */
-        '{
-          "knygnesiai": {
-            "name": "Knygų mainai",
-            "mentors": [
-              "Karolis"
-            ],
-            "students": [
-              "Mindaugas",
-              "Tadas"
-            ]
-          },
-          "carbooking": {
-            "name": "Car booking",
-            "mentors": [
-              "Monika",
-              "Tomas"
-            ],
-            "students": [
-              "Matas",
-              "Adomas",
-              "Aidas"
-            ]
-          },
-          "academyui": {
-            "name": "NFQ Akademijos puslapis",
-            "mentors": [
-              "Tomas"
-            ],
-            "students": [
-              "Indrė"
-            ]
-          },
-          "buhalteriui": {
-            "name": "Pagalba buhalteriui",
-            "mentors": [
-              "Aistis"
-            ],
-            "students": [
-              "Geraldas",
-              "Matas"
-            ]
-          },
-          "mapsportas": {
-            "name": "Sporto draugas",
-            "mentors": [
-              "Agnis"
-            ],
-            "students": [
-              "Mantas",
-              "Pijus"
-            ]
-          },
-          "trainme": {
-            "name": "Asmeninio trenerio puslapis",
-            "mentors": [
-              "Laurynas"
-            ],
-            "students": [
-              "Ignas",
-              "Gintautas"
-            ]
-          }
-        }';
+            '{
+              "knygnesiai": {
+                "name": "Knygų mainai",
+                "mentors": [
+                  "Karolis"
+                ],
+                "students": [
+                  "Mindaugas",
+                  "Tadas"
+                ]
+              },
+              "carbooking": {
+                "name": "Car booking",
+                "mentors": [
+                  "Monika",
+                  "Tomas"
+                ],
+                "students": [
+                  "Matas",
+                  "Adomas",
+                  "Aidas"
+                ]
+              },
+              "academyui": {
+                "name": "NFQ Akademijos puslapis",
+                "mentors": [
+                  "Tomas"
+                ],
+                "students": [
+                  "Indrė"
+                ]
+              },
+              "buhalteriui": {
+                "name": "Pagalba buhalteriui",
+                "mentors": [
+                  "Aistis"
+                ],
+                "students": [
+                  "Geraldas",
+                  "Matas"
+                ]
+              },
+              "mapsportas": {
+                "name": "Sporto draugas",
+                "mentors": [
+                  "Agnis"
+                ],
+                "students": [
+                  "Mantas",
+                  "Pijus"
+                ]
+              },
+              "trainme": {
+                "name": "Asmeninio trenerio puslapis",
+                "mentors": [
+                  "Laurynas"
+                ],
+                "students": [
+                  "Ignas",
+                  "Gintautas"
+                ]
+              }
+            }';
     }
 
-    private function getStudents(): array {
+    private function getStudents(): array
+    {
         $students = [];
         $storage = json_decode($this->getStorage(), true);
         foreach ($storage as $teamData) {
@@ -121,4 +122,3 @@ class PeopleController extends AbstractController
         return $students;
     }
 }
-

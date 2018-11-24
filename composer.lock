@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ee06c9b190d4c1e3944d543fcccec9f2",
+    "content-hash": "6f1ac7104b3a0cafe08d8ad9215dde7e",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -646,6 +646,215 @@
                 "reflection"
             ],
             "time": "2018-06-14T14:45:07+00:00"
+        },
+        {
+            "name": "msgphp/domain",
+            "version": "v0.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/msgphp/domain.git",
+                "reference": "700e3a1a2a6dcb4c3f620209281f3748c01959dd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/msgphp/domain/zipball/700e3a1a2a6dcb4c3f620209281f3748c01959dd",
+                "reference": "700e3a1a2a6dcb4c3f620209281f3748c01959dd",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1.0"
+            },
+            "require-dev": {
+                "api-platform/core": "^2.2",
+                "doctrine/doctrine-bundle": "^1.8",
+                "doctrine/orm": "^2.6",
+                "elasticsearch/elasticsearch": "^6.0",
+                "psr/container": "^1.0",
+                "ramsey/uuid": "^3.7",
+                "ramsey/uuid-doctrine": "^1.4",
+                "simple-bus/message-bus": "^3.0",
+                "symfony/config": "^3.4|^4.0",
+                "symfony/dependency-injection": "^3.4.16|^4.0.16|^4.1.5",
+                "symfony/http-kernel": "^3.4|^4.0",
+                "symfony/messenger": "^4.1",
+                "symfony/phpunit-bridge": "^3.4.9|^4.0.9",
+                "symfony/property-access": "^3.4|^4.0",
+                "symfony/var-dumper": "^3.4|^4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.7-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "MsgPhp\\Domain\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Roland Franssen",
+                    "email": "franssen.roland@gmail.com"
+                }
+            ],
+            "description": "A base domain layer to rapidly built other domain layers",
+            "keywords": [
+                "command query responsibility segregation",
+                "cqrs",
+                "ddd",
+                "domain model",
+                "domain-driven-design",
+                "entity",
+                "es",
+                "event sourcing",
+                "rich domain model"
+            ],
+            "time": "2018-10-04T10:23:16+00:00"
+        },
+        {
+            "name": "msgphp/user",
+            "version": "v0.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/msgphp/user.git",
+                "reference": "7b77565e8d5c6ff10daa2b211523b1a73eb9d5d6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/msgphp/user/zipball/7b77565e8d5c6ff10daa2b211523b1a73eb9d5d6",
+                "reference": "7b77565e8d5c6ff10daa2b211523b1a73eb9d5d6",
+                "shasum": ""
+            },
+            "require": {
+                "msgphp/domain": "^0.7"
+            },
+            "require-dev": {
+                "doctrine/orm": "^2.6",
+                "lexik/jwt-authentication-bundle": "^2.5",
+                "msgphp/eav": "^0.7",
+                "sensio/framework-extra-bundle": "^5.1",
+                "symfony/console": "^3.4|^4.0",
+                "symfony/form": "^3.4|^4.0",
+                "symfony/http-kernel": "^3.4|^4.0",
+                "symfony/phpunit-bridge": "^3.4.9|^4.0.9",
+                "symfony/security-core": "^3.4|^4.0",
+                "symfony/validator": "^3.4|^4.0",
+                "symfony/var-dumper": "^3.4|^4.0"
+            },
+            "suggest": {
+                "msgphp/eav": "To enable user attribute values"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.7-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "MsgPhp\\User\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Roland Franssen",
+                    "email": "franssen.roland@gmail.com"
+                }
+            ],
+            "description": "A domain layer providing basic user management",
+            "keywords": [
+                "rich domain model",
+                "security",
+                "user"
+            ],
+            "time": "2018-09-26T17:06:21+00:00"
+        },
+        {
+            "name": "msgphp/user-bundle",
+            "version": "v0.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/msgphp/user-bundle.git",
+                "reference": "67d3a0c5354570c0f94966ab0d41c04a48863343"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/msgphp/user-bundle/zipball/67d3a0c5354570c0f94966ab0d41c04a48863343",
+                "reference": "67d3a0c5354570c0f94966ab0d41c04a48863343",
+                "shasum": ""
+            },
+            "require": {
+                "msgphp/user": "^0.7",
+                "symfony/config": "^3.4|^4.0",
+                "symfony/dependency-injection": "^3.4|^4.0",
+                "symfony/http-kernel": "^3.4|^4.0"
+            },
+            "require-dev": {
+                "doctrine/doctrine-bundle": "^1.8",
+                "doctrine/orm": "^2.6",
+                "lexik/jwt-authentication-bundle": "^2.5",
+                "msgphp/eav-bundle": "^0.7",
+                "simple-bus/symfony-bridge": "^5.1",
+                "symfony/console": "^3.4|^4.0",
+                "symfony/form": "^3.4|^4.0",
+                "symfony/maker-bundle": "^1.5",
+                "symfony/messenger": "^4.1",
+                "symfony/phpunit-bridge": "^3.4.9|^4.0.9",
+                "symfony/security-bundle": "^3.4|^4.0",
+                "symfony/twig-bundle": "^3.4|^4.0",
+                "symfony/validator": "^3.4|^4.0",
+                "symfony/var-dumper": "^3.4|^4.0"
+            },
+            "suggest": {
+                "msgphp/eav-bundle": "To enable user attribute values"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.7-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "MsgPhp\\UserBundle\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Roland Franssen",
+                    "email": "franssen.roland@gmail.com"
+                }
+            ],
+            "description": "Basic user management (the `User` domain)",
+            "keywords": [
+                "rich domain model",
+                "security",
+                "symfony",
+                "user"
+            ],
+            "time": "2018-09-26T17:06:21+00:00"
         },
         {
             "name": "psr/cache",

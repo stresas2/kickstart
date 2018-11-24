@@ -32,6 +32,21 @@
     "doctrine/reflection": {
         "version": "v1.0.0"
     },
+    "msgphp/domain": {
+        "version": "v0.7.0"
+    },
+    "msgphp/user": {
+        "version": "v0.7.0"
+    },
+    "msgphp/user-bundle": {
+        "version": "0.6",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "0.6",
+            "ref": "6629107e956e6eb4a7d45367717ff4e7c0dd5a9f"
+        }
+    },
     "nikic/php-parser": {
         "version": "v4.0.4"
     },

@@ -44,7 +44,8 @@ class HomeController extends Controller
         }
 
         return $this->render('home/index.html.twig', [
-            'files' => $files
+            'files' => $files,
+            'uploadedFiles' => $this->uploadedFiles($webDir),
         ]);
     }
 
@@ -52,5 +53,13 @@ class HomeController extends Controller
         if (!is_dir($uploadDir)) {
             mkdir($uploadDir, 0777, true);
         }
+    }
+
+    /**
+     * @return string[]
+     */
+    private function uploadedFiles($webDir)
+    {
+        return array_map('basename', glob("$webDir/uploads/*.jpg"));
     }
 }

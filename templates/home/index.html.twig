@@ -11,9 +11,20 @@
 
     <hr/>
 
-    <ul>
-    {% for name, file in files %}
-        <li>{{ name }}: {{ file.realPath }}</li>
-    {% endfor %}
-    </ul>
+    {% if files %}
+        During file upload (placed to temporary directory)
+        <ul>
+        {% for name, file in files %}
+            <li>{{ name }}: {{ file.realPath }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+
+
+    {% if uploadedFiles %}
+        All uploaded images:<br/>
+        {% for name in uploadedFiles %}
+            <img src="uploads/{{ name|url_encode }}" style="width: 25%; height: 25%; margin: 0.5em"/>
+        {% endfor %}
+    {% endif %}
 {% endblock %}

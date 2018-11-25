@@ -110,6 +110,11 @@ Plačiau žr. [MySql GUI dokumentacijoje](https://github.com/nfqakademija/docker
 Trumpai: `./scripts/backend.sh /enable_xdebug.sh <TAVO_KOMPO_IP_ADRESAS>`
 Plačiau žr. [xDebug dokumentacijoje](https://github.com/nfqakademija/docker/blob/master/docs/setup-xdebug.md)
 
+* **Kaip pratestuoti el. pašto siuntimą**
+Savo `.env` faile nurodykite `MAILER_URL=smtp:://mailcacher.symfony:25?encryption=&auth_mode=`
+Kai Symfony išsiųs el. laišką, jį matysite atsidare [127.0.0.1:1080](http://127.0.0.1:1080)  
+
+
 * **Turių daugiau techninių klausimų?**
 Google ir StackOverflow yra geriausi tavo draugai.
 Nepavykus – kreipkis į savo mentorių. Jei jis nepadės,

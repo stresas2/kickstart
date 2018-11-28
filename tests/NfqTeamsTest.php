@@ -20,7 +20,7 @@ class NfqTeamsTest extends TestCase
             [
                 'academyui' => [
                     'mentors' => ['Jonas Jonaitis'],
-                    'students' => ['Petras Petraitis', 'Gedas Gražauskas']
+                    'students' => ['Petras Petraitis', 'Gedas Gražauskas'],
                 ],
                 'supperreal' => [
                     'mentors' => ['Vardenis Pavardenis', 'Ada Kalbenė'],
@@ -38,7 +38,7 @@ class NfqTeamsTest extends TestCase
             [
                 'academyui' => [
                     'mentors' => ['Jonas Jonaitis'],
-                    'students' => ['Petras Petraitis', 'Gedas Gražauskas']
+                    'students' => ['Petras Petraitis', 'Gedas Gražauskas'],
                 ],
                 'supperreal' => [
                     'mentors' => ['Vardenis Pavardenis', 'Ada Kalbenė'],

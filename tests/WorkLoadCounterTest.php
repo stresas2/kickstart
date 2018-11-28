@@ -2,24 +2,22 @@
 
 namespace App\Tests;
 
-use App\Services\NfqTeams;
+use App\Services\TeamsInterface;
 use App\Services\WorkLoadCounter;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class WorkLoadCounterTest extends TestCase
 {
     public function testOneMentorHelpsMultipleTeams()
     {
-        $teams = new NfqTeams([
-            'a' => [
-                'mentors' => ['Jonas', 'Petras']
-            ],
-            'b' => [
-                'mentors' => ['Jonas']
-            ]
-        ]);
+        /** @var TeamsInterface|MockObject $teams */
+        $teams = $this->createMock(TeamsInterface::class);
+        $teams->expects($this->exactly(2))
+            ->method('getTeamByMentor')
+            ->willReturn('a');
+
         $workLoadCounter = new WorkLoadCounter($teams, ['Jonas', 'Petras']);
         $this->assertEquals(2, $workLoadCounter->studentsCount('a'));
-        $this->assertEquals(0, $workLoadCounter->studentsCount('Not existing'));
     }
 }

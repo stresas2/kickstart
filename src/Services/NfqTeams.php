@@ -2,7 +2,6 @@
 
 namespace App\Services;
 
-
 class NfqTeams implements TeamsInterface
 {
     private $data = [];

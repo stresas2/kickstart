@@ -2,7 +2,6 @@
 
 namespace App\Services;
 
-
 interface TeamsInterface
 {
     public function getTeamByMember(string $name): ?string;

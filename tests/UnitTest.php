@@ -10,4 +10,9 @@ class UnitTest extends TestCase
     {
         $this->assertTrue(true);
     }
+
+    public function testMyIntentionalMistake()
+    {
+        $this->assertEquals(5, 2 + 2);
+    }
 }

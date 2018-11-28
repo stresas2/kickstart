@@ -20,11 +20,11 @@ class NfqTeamsTest extends TestCase
             [
                 'academyui' => [
                     'mentors' => ['Jonas Jonaitis'],
-                    'students' => ['Petras Petraitis', 'Gedas Gražauskas']
+                    'students' => ['Petras Petraitis', 'Gedas Gražauskas'],
                 ],
                 'supperreal' => [
                     'mentors' => ['Vardenis Pavardenis', 'Ada Kalbenė'],
-                    'students' => ['Vytautas Vėjūnas']
+                    'students' => ['Vytautas Vėjūnas'],
                 ],
             ]
         );
@@ -38,15 +38,49 @@ class NfqTeamsTest extends TestCase
             [
                 'academyui' => [
                     'mentors' => ['Jonas Jonaitis'],
-                    'students' => ['Petras Petraitis', 'Gedas Gražauskas']
+                    'students' => ['Petras Petraitis', 'Gedas Gražauskas'],
                 ],
                 'supperreal' => [
                     'mentors' => ['Vardenis Pavardenis', 'Ada Kalbenė'],
-                    'students' => ['Vytautas Vėjūnas']
+                    'students' => ['Vytautas Vėjūnas'],
                 ],
             ]
         );
         $this->assertEquals('academyui', $teams->getTeamByMember('Gedas Gražauskas'));
         $this->assertEquals('supperreal', $teams->getTeamByMember('Vytautas Vėjūnas'));
+    }
+
+    public function testInvalidMember()
+    {
+        $teams = new NfqTeams(
+            [
+                'academyui' => [
+                    'mentors' => ['Jonas Jonaitis'],
+                    'students' => ['Petras Petraitis', 'Gedas Gražauskas'],
+                ],
+                'supperreal' => [
+                    'mentors' => ['Vardenis Pavardenis', 'Ada Kalbenė'],
+                    'students' => ['Vytautas Vėjūnas'],
+                ],
+            ]
+        );
+        $this->assertNull($teams->getTeamByMember('Neegzistuojantis'));
+    }
+
+    public function testInvalidMentor()
+    {
+        $teams = new NfqTeams(
+            [
+                'academyui' => [
+                    'mentors' => ['Jonas Jonaitis'],
+                    'students' => ['Petras Petraitis', 'Gedas Gražauskas'],
+                ],
+                'supperreal' => [
+                    'mentors' => ['Vardenis Pavardenis', 'Ada Kalbenė'],
+                    'students' => ['Vytautas Vėjūnas'],
+                ],
+            ]
+        );
+        $this->assertNull($teams->getTeamByMentor('Neegzistuojantis'));
     }
 }

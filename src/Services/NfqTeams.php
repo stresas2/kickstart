@@ -18,11 +18,27 @@ class NfqTeams implements TeamsInterface
 
     public function getTeamByMember(string $name): ?string
     {
+        foreach ($this->data as $teamName => $teamData) {
+            foreach ($teamData['students'] as $student) {
+                if ($student === $name) {
+                    return $teamName;
+                }
+            }
+        }
+
         return null;
     }
 
     public function getTeamByMentor(string $name): ?string
     {
+        foreach ($this->data as $teamName => $teamData) {
+            foreach ($teamData['mentors'] as $mentor) {
+                if ($mentor === $name) {
+                    return $teamName;
+                }
+            }
+        }
+
         return null;
     }
 }

@@ -33,18 +33,42 @@ class NfqTeamsTest extends TestCase
         $this->assertNull($teams->getTeamByMentor('notExisting'));
     }
 
-    public function testValidMentor()
+    public function providerValidMentors()
     {
-        $teams = $this->twoTeams;
-        $this->assertEquals('academyui', $teams->getTeamByMentor('Jonas Jonaitis'));
-        $this->assertEquals('supperreal', $teams->getTeamByMentor('Ada Kalbenė'));
+        return [
+            'one of one' => ['academyui', 'Jonas Jonaitis'],
+            'last one' => ['supperreal', 'Ada Kalbenė'],
+        ];
     }
 
-    public function testValidMember()
+    /**
+     * @dataProvider providerValidMentors
+     * @param string $expectedTeam
+     * @param string $actualName
+     */
+    public function testValidMentor($expectedTeam, $actualName)
     {
         $teams = $this->twoTeams;
-        $this->assertEquals('academyui', $teams->getTeamByMember('Gedas Gražauskas'));
-        $this->assertEquals('supperreal', $teams->getTeamByMember('Vytautas Vėjūnas'));
+        $this->assertEquals($expectedTeam, $teams->getTeamByMentor($actualName));
+    }
+
+    public function providerValidMembers()
+    {
+        return [
+            'last one' => ['academyui', 'Gedas Gražauskas'],
+            'one of one' => ['supperreal', 'Vytautas Vėjūnas'],
+        ];
+    }
+
+    /**
+     * @dataProvider providerValidMembers
+     * @param string $expectedTeam
+     * @param string $actualName
+     */
+    public function testValidMember($expectedTeam, $actualName)
+    {
+        $teams = $this->twoTeams;
+        $this->assertEquals($expectedTeam, $teams->getTeamByMember($actualName));
     }
 
     public function testInvalidMember()

@@ -2,23 +2,21 @@ version: "2"
 
 services:
   nginx.symfony:
-    container_name: nginx.symfony
+    build: docker/nginx
     image: aurelijusb/docker:nginx-latest
-    user: "${UID}:${GID}"
     volumes:
       - ../:/code # Mount your code, so nginx/phpcould see it
     ports:
       - 127.0.0.1:8000:80 # For development. Open in browser 127.0.0.1:8000
 
   php.symfony:
-    container_name: php.symfony
+    build: docker/php
     image: aurelijusb/docker:php-latest
-    user: "${UID}:${GID}"
     volumes:
       - ../:/code # Mount your code, so nginx/phpcould see it
 
   mysql.symfony:
-    container_name: mysql.symfony
+    build: docker/mysql
     image: aurelijusb/docker:mysql-latest
     volumes:
       - ../.docker/mysql-data/:/var/lib/mysql # To persist data between restarts

@@ -21,12 +21,9 @@ fi
 chmod 777 "$SCRIPT_DIR/../.docker/"
 mkdir -p -m 777 "$SCRIPT_DIR/../.docker/ide-home"
 
-# Fixing different user case
-export UID=${UID}
-export GID=${GID}
-
 # Start server
 echo "Starting docker containers..."
+docker-compose -f "$SCRIPT_DIR/docker-compose.yml" build
 docker-compose -f "$SCRIPT_DIR/docker-compose.yml" up -d
 
 # Documentation for end user

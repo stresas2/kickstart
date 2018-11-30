@@ -8,10 +8,6 @@ pushd `dirname $0` > /dev/null
 SCRIPT_DIR=`pwd`
 popd > /dev/null
 
-# Fixing different user case
-export UID=${UID}
-export GID=${GID}
-
 # Prerequisite
 docker --version > /dev/null 2>&1 || { echo >&2 "Docker not found. Please install it via https://docs.docker.com/install/"; exit 1; }
 docker-compose --version > /dev/null 2>&1 || { echo >&2 "Docker-compose not found. Please install it via https://docs.docker.com/compose/install/"; exit 1; }

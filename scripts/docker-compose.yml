@@ -4,6 +4,7 @@ services:
   nginx.symfony:
     container_name: nginx.symfony
     image: aurelijusb/docker:nginx-latest
+    user: "${UID}:${GID}"
     volumes:
       - ../:/code # Mount your code, so nginx/phpcould see it
     ports:
@@ -12,6 +13,7 @@ services:
   php.symfony:
     container_name: php.symfony
     image: aurelijusb/docker:php-latest
+    user: "${UID}:${GID}"
     volumes:
       - ../:/code # Mount your code, so nginx/phpcould see it
 

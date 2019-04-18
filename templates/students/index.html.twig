@@ -9,12 +9,10 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/code/src/Controller/StudentsController.php'|file_link(0) }}">src/Controller/StudentsController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/code/templates/students/index.html.twig'|file_link(0) }}">templates/students/index.html.twig</a></code></li>
-    </ul>
+    {% if testas == "labas" %}
+        Pasisveikinimas
+    {% else %}
+        Sakė: {{ testas }}
+    {% endif %}
 </div>
 {% endblock %}

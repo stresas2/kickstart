@@ -8,4 +8,9 @@
     {% else %}
         Anonimas
     {% endif %}
+
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <hr/>
+        <p>Email: {{ app.user.email }}</p>
+    {% endif %}
 {% endblock %}

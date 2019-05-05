@@ -20,6 +20,10 @@ security:
                     - App\Security\AppCustomAuthenticator
             anonymous: true
 
+            logout:
+                path:   /logout
+                target: /
+
             # activate different ways to authenticate
 
             # http_basic: true

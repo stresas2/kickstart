@@ -1,7 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ someVariable }}{% endblock %}
+{% block title %}Symfony 3{% endblock %}
 
 {% block body %}
-    <div class="nfq-academy">{{ someVariable }}</div>
+    {% if user %}
+        Prisjungęs: {{ user.username }}
+    {% else %}
+        Anonimas
+    {% endif %}
 {% endblock %}

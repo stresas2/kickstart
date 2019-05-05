@@ -4,21 +4,20 @@ security:
 
     # https://symfony.com/doc/current/security/user_provider.html#memory-user-provider
     providers:
-       my-tests:
-           memory:
-                users:
-                    aurelijus@banelis.lt:
-                        password: slaptaslektorius
-                        roles: ['ROLE_LECTOR', 'ROLE_USER']
-                    some@example.com:
-                        password: a4d027e98f8e232880c15e9e48fdf87c
-                        roles: ['ROLE_USER']
+        # used to reload user from session & other features (e.g. switch_user)
+        app_user_provider:
+            entity:
+                class: App\Entity\User
+                property: email
 
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
+            guard:
+                authenticators:
+                    - App\Security\AppCustomAuthenticator
             anonymous: true
 
             # activate different ways to authenticate

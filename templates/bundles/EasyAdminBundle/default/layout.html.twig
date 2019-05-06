@@ -1,14 +1,8 @@
-<!DOCTYPE html>
-<html lang="{{ app.request.locale|split('_')|first|default('en') }}">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noodp, noimageindex, notranslate, nocache" />
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <meta name="generator" content="EasyAdmin" />
+{% extends 'base.html.twig' %}
 
-    <title>{% block page_title %}{{ block('content_title')|striptags|raw }}{% endblock %}</title>
+{% block title %}{% block page_title %}{{ block('content_title')|striptags|raw }}{% endblock %}{% endblock %}
 
+{% block stylesheets %}
     {% block head_stylesheets %}
         <link rel="stylesheet" href="{{ asset('bundles/easyadmin/app.css') }}">
 
@@ -26,17 +20,23 @@
         <link rel="icon" type="{{ favicon.mime_type }}" href="{{ asset(favicon.path) }}" />
     {% endblock %}
 
+    {% if easyadmin_config('design.rtl') %}
+        <link rel="stylesheet" href="{{ asset('bundles/easyadmin/app-rtl.css') }}">
+    {% endif %}
+
+    {{ parent() }}
+{% endblock %}
+
+{% block javascripts %}
     {% block head_javascript %}
         <script src="{{ asset('bundles/easyadmin/app.js') }}"></script>
     {% endblock head_javascript %}
 
-    {% if easyadmin_config('design.rtl') %}
-        <link rel="stylesheet" href="{{ asset('bundles/easyadmin/app-rtl.css') }}">
-    {% endif %}
-</head>
+    {{ parent() }}
+{% endblock %}
 
 {% block body %}
-    <body id="{% block body_id %}{% endblock %}" class="easyadmin {% block body_class %}{% endblock %}">
+    <div id="{% block body_id %}{% endblock %}" class="easyadmin {% block body_class %}{% endblock %}">
     <script>
         document.body.classList.add(
             'easyadmin-content-width-' + (localStorage.getItem('easyadmin/content/width') || 'normal'),
@@ -183,6 +183,5 @@
     {% for js_asset in easyadmin_config('design.assets.js') %}
         <script src="{{ asset(js_asset) }}"></script>
     {% endfor %}
-    </body>
+    </div>
 {% endblock body %}
-</html>

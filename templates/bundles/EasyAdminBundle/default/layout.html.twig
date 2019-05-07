@@ -20,23 +20,21 @@
         <link rel="icon" type="{{ favicon.mime_type }}" href="{{ asset(favicon.path) }}" />
     {% endblock %}
 
-    {% if easyadmin_config('design.rtl') %}
-        <link rel="stylesheet" href="{{ asset('bundles/easyadmin/app-rtl.css') }}">
-    {% endif %}
-
     {{ parent() }}
 {% endblock %}
 
-{% block javascripts %}
+{% block head %}
     {% block head_javascript %}
         <script src="{{ asset('bundles/easyadmin/app.js') }}"></script>
     {% endblock head_javascript %}
 
-    {{ parent() }}
+    {% if easyadmin_config('design.rtl') %}
+        <link rel="stylesheet" href="{{ asset('bundles/easyadmin/app-rtl.css') }}">
+    {% endif %}
 {% endblock %}
 
+{% block body_attributes %} id="{% block body_id %}{% endblock %}" class="easyadmin {% block body_class %}{% endblock %}" {% endblock %}
 {% block body %}
-    <div id="{% block body_id %}{% endblock %}" class="easyadmin {% block body_class %}{% endblock %}">
     <script>
         document.body.classList.add(
             'easyadmin-content-width-' + (localStorage.getItem('easyadmin/content/width') || 'normal'),
@@ -183,5 +181,4 @@
     {% for js_asset in easyadmin_config('design.assets.js') %}
         <script src="{{ asset(js_asset) }}"></script>
     {% endfor %}
-    </div>
 {% endblock body %}

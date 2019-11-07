@@ -10,7 +10,7 @@ Sveiki! Tai yra Jūsų startinis projekto "template".
 visais reikalingais failais ir įrankiais darbui:
  
 - Lokalaus development'o aplinka (docker) (PHP 7.3, MySql DB, Nginx)
-- Paprastas pavyzdys (Conroller, Template, CSS)
+- Paprastas pavyzdys (Controller, Template, CSS)
 - Įdiegtas bootstrap
 - Asset'ų buildinimas (encore, yarn, sass)
 - Travis CI template

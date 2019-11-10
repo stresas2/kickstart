@@ -1,6 +1,5 @@
 name: Symfony 1 Homework
 on:
-  - push
   - pull_request
 jobs:
   build:

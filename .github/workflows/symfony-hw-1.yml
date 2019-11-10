@@ -1,5 +1,7 @@
 name: Symfony 1 Homework
-on: push
+on:
+  - push
+  - pull_request
 jobs:
   build:
     name: Build and test for Symfony 1 Homework

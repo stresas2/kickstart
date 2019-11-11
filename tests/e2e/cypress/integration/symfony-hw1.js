@@ -79,4 +79,63 @@ describe('First homework', function() {
             expect(link).to.eq("students.json");
         })
     });
+
+    it('Have properly escaped student', () => {
+        cy.visit(basePath);
+        cy.contains("Studentai")
+            .parent()
+            .children()
+            .last()
+            .contains(`<b>Ir</b> jo "geras" draug'as`)
+            .then( element => {
+                const link = element.get(0).href;
+                assert(
+                    link.endsWith('?name=%3Cb%3EIr%3C/b%3E%20jo%20%22geras%22%20draug%27as&project=hack%3Cb%3Eer%3C/b%3E%27is%20po%20.mySubdomain%20%26project%3D123'),
+                    'Expected urlencoded Twig filter'
+                );
+            })
+    });
+
+    it('Have properly escaped Projektai', () => {
+        cy.visit(basePath);
+        cy.contains("Projektai")
+            .parent()
+            .children()
+            .last().
+            contains(`' OR 1 -- DROP DATABASE`)
+            .parent()
+            .contains(`github.com/nfqakademija/hack<b>er</b>'is po .mySubdomain &project=123`)
+            .parent()
+            .parent()
+            .contains(`hack<b>er</b>'is po .mySubdomain &project=123.projektai.nfqakademija.lt/`)
+            .then( element => {
+                const link = element.get(0).href;
+                expect(link).to.eq(`http://hack%3Cb%3Eer%3C%2Fb%3E%27is%20po%20.mysubdomain%20%26project%3D123.projektai.nfqakademija.lt/`);
+            })
+            .parent()
+            .parent()
+            .contains(`ssh hack<b>er</b>'is po .mySubdomain &project=123@deploy.nfqakademija.lt -p 2222`)
+    });
+
+    it('Have correct person with good evaluation', () => {
+        cy.visit(basePath);
+        cy.contains("Studentai")
+            .parent()
+            .children('.list-group-item:not(.list-group-item-info)')
+            .children("a")
+            .then( elements => {
+                cy.wrap(elements).each(element => {
+                    let path = element.get(0).href;
+                    cy.visit(path).get('.alert, .success').then( data => {
+                        if (data.get(0).innerText === 'Dešimt balų') {
+                            cy.screenshot()
+                            cy.wrap([path]).each( path => {
+                                dd(`Įvertinti: ${path}`);
+                            });
+
+                        }
+                    });
+                });
+            });
+    });
 });

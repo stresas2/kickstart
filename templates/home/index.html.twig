@@ -4,7 +4,15 @@
 
 {% block body %}
 
-    {% for student in someVariable %}
-        <div>{{ student }}</div>
-    {% endfor %}
+    <ul class="list-group m-4">
+        <li class="list-group-item list-group-item-info">Studentai</li>
+        {% for student in someVariable %}
+
+            <li class="list-group-item">
+                {{ student }}
+            </li>
+            <div></div>
+        {% endfor %}
+
+    </ul>
 {% endblock %}

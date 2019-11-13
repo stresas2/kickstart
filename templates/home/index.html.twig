@@ -6,15 +6,65 @@
 
     <ul class="list-group m-4">
         <li class="list-group-item list-group-item-info">Studentai</li>
-        {% for student in someVariable %}
+
+        {% for students in students %}
+
 
             <li class="list-group-item">
-                {{ student }}
+
+
+                        <a href={{ path('student', {'name': students.name|escape, 'project': students.sortName|escape })  }}>{{ students.name|escape }}</a>
+
+                        ( <span class="badge">Mentorius</span> {{ students.mentor|escape }} )
+
+
+
             </li>
-            <div></div>
+
+
         {% endfor %}
 
     </ul>
 
-    <a href="{{ path('student') }}">Studentas</a>
+    <div class="m-4">
+        <form action="/student" method="get">
+            <div class="input-group">
+                <input name="name" type="text" class="form-control" placeholder="Studentas">
+            </div>
+            <div class="input-group">
+                <input name="project" type="text" class="form-control" placeholder="Projektas">
+            </div>
+            <button type="submit" class="btn btn-success">Sužinoti vertinimą</button>
+        </form>
+    </div>
+
+    <ul class="list-group m-4">
+        <li class="list-group-item list-group-item-info">Projektai</li>
+
+        {% for project in projects %}
+
+        <li class="list-group-item">
+            <h3>{{ project.fullProjectName }}</h3>
+            <div class="panel panel-default">
+                <div>
+                    <a target="_blank" href="https://github.com/nfqakademija/{{ project.sortName|escape }}">github.com/nfqakademija/{{ project.sortName }}</a>
+                    <span class="badge">GitHub</span>
+                </div>
+                <div>
+                    <a target="_blank" href="http://{{ project.sortName|escape }}.projektai.nfqakademija.lt/">{{ project.sortName|escape }}.projektai.nfqakademija.lt/</a>
+                    <span class="badge">Web</span>
+                </div>
+                <div>
+                    <pre>ssh {{ project.sortName|escape }}@deploy.nfqakademija.lt -p 2222</pre>
+                </div>
+            </div>
+        </li>
+
+        {% endfor %}
+    </ul>
+
+    <div class="m-4">
+        <a class="text-light" href="https://hw1.nfq2019.online/students.json">Duomenų failas</a>
+    </div>
+
 {% endblock %}

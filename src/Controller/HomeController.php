@@ -20,7 +20,7 @@ class HomeController extends AbstractController
         $result = [];
         foreach ($obj as $key=>$students) {
             foreach ($students->students as $student) {
-                $result[] = ['name' => $student, 'mentor' => $students->mentors[0], 'sortName' => $key, 'fullProjectName' => $students->name];
+                $result[] = ['name' => $student, 'mentor' => $students->mentors[0], 'sortName' => $key];
             }
         }
 

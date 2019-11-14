@@ -13,7 +13,6 @@ class StudentController extends AbstractController
      */
     public function index(Request $request)
     {
-        //$a = $request->getProjectDir();
 
         $name = $request->get('name', '');
         $project = $request->get('project', '');

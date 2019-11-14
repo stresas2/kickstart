@@ -12,13 +12,13 @@
                 <th scope="row">Studentas</th>
             </tr>
             <tr>
-                <td>{{ project|escape }}</td>
-                <td>{{ name|escape }}</td>
+                <td>{{ project }}</td>
+                <td>{{ name }}</td>
             </tr>
             </tbody>
         </table>
 
-        {% if name|escape == 'Lukas' %}
+        {% if name == 'Lukas' %}
 
             <div class="alert alert-success" role="alert">
                 Dešimt balų

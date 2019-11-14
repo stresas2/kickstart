@@ -13,9 +13,9 @@
             <li class="list-group-item">
 
 
-                        <a href={{ path('student', {'name': students.name|escape, 'project': students.sortName|escape })  }}>{{ students.name|escape }}</a>
+                        <a href={{ path('student', {'name': students.name, 'project': students.sortName })|escape  }}>{{ students.name }}</a>
 
-                        ( <span class="badge">Mentorius</span> {{ students.mentor|escape }} )
+                        ( <span class="badge">Mentorius</span> {{ students.mentor }} )
 
 
 
@@ -47,15 +47,15 @@
             <h3>{{ project.fullProjectName }}</h3>
             <div class="panel panel-default">
                 <div>
-                    <a target="_blank" href="https://github.com/nfqakademija/{{ project.sortName|escape }}">github.com/nfqakademija/{{ project.sortName }}</a>
+                    <a target="_blank" href="https://github.com/nfqakademija/{{ project.sortName|url_encode }}">github.com/nfqakademija/{{ project.sortName }}</a>
                     <span class="badge">GitHub</span>
                 </div>
                 <div>
-                    <a target="_blank" href="http://{{ project.sortName|escape }}.projektai.nfqakademija.lt/">{{ project.sortName|escape }}.projektai.nfqakademija.lt/</a>
+                    <a target="_blank" href="http://{{ project.sortName|url_encode }}.projektai.nfqakademija.lt/">{{ project.sortName|escape }}.projektai.nfqakademija.lt/</a>
                     <span class="badge">Web</span>
                 </div>
                 <div>
-                    <pre>ssh {{ project.sortName|escape }}@deploy.nfqakademija.lt -p 2222</pre>
+                    <pre>ssh {{ project.sortName|url_encode }}@deploy.nfqakademija.lt -p 2222</pre>
                 </div>
             </div>
         </li>
@@ -64,7 +64,7 @@
     </ul>
 
     <div class="m-4">
-        <a class="text-light" href="https://hw1.nfq2019.online/students.json">Duomenų failas</a>
+        <a class="text-light" href="students.json">Duomenų failas</a>
     </div>
 
 {% endblock %}

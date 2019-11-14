@@ -13,9 +13,9 @@
             <li class="list-group-item">
 
 
-                        <a href={{ path('student', {'name': students.name, 'project': students.sortName })|escape  }}>{{ students.name }}</a>
+                        <a href={{ path('student', {'name': students.name|e, 'project': students.sortName|e })  }}>{{ students.name|e }}</a>
 
-                        ( <span class="badge">Mentorius</span> {{ students.mentor }} )
+                        ( <span class="badge">Mentorius</span> {{ students.mentor|e }} )
 
 
 
@@ -44,14 +44,14 @@
         {% for project in projects %}
 
         <li class="list-group-item">
-            <h3>{{ project.fullProjectName }}</h3>
+            <h3>{{ project.fullProjectName|e }}</h3>
             <div class="panel panel-default">
                 <div>
-                    <a target="_blank" href="https://github.com/nfqakademija/{{ project.sortName|url_encode }}">github.com/nfqakademija/{{ project.sortName }}</a>
+                    <a target="_blank" href="https://github.com/nfqakademija/{{ project.sortName|url_encode }}">github.com/nfqakademija/{{ project.sortName|e }}</a>
                     <span class="badge">GitHub</span>
                 </div>
                 <div>
-                    <a target="_blank" href="http://{{ project.sortName|url_encode }}.projektai.nfqakademija.lt/">{{ project.sortName|escape }}.projektai.nfqakademija.lt/</a>
+                    <a target="_blank" href="http://{{ project.sortName|url_encode }}.projektai.nfqakademija.lt/">{{ project.sortName|e }}.projektai.nfqakademija.lt/</a>
                     <span class="badge">Web</span>
                 </div>
                 <div>

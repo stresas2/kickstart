@@ -160,7 +160,7 @@ class User implements UserInterface
      */
     public function setHomepage(?string $homepage): self
     {
-        $this->homepage = $homepage;id
+        $this->homepage = $homepage;
         return $this;
     }
     /**

@@ -166,7 +166,7 @@ class User implements UserInterface
     /**
      * @return string|null
      */
-    public function getLinkedIn(): ?string
+    public function getLinkedin(): ?string
     {
         return $this->linkedin;
     }
@@ -174,7 +174,7 @@ class User implements UserInterface
      * @param string|null $linkedin
      * @return User
      */
-    public function setLinkedIn(?string $linkedin): self
+    public function setLinkedin(?string $linkedin): self
     {
         $this->linkedin = $linkedin;
         return $this;

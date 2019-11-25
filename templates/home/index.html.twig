@@ -13,7 +13,7 @@
             <li class="list-group-item">
 
 
-                        <a href={{ path('student', {'name': students.name, 'project': students.sortName })|escape  }}>{{ students.name }}</a>
+                        <a href={{ path('student', {'name': students.name, 'project': students.sortName })  }}>{{ students.name }}</a>
 
                         ( <span class="badge">Mentorius</span> {{ students.mentor }} )
 
@@ -27,7 +27,7 @@
     </ul>
 
     <div class="m-4">
-        <form action="/student" method="get">
+        <form action="{{ path('student') }}" method="get">
             <div class="input-group">
                 <input name="name" type="text" class="form-control" placeholder="Studentas">
             </div>
@@ -44,7 +44,7 @@
         {% for project in projects %}
 
         <li class="list-group-item">
-            <h3>{{ project.fullProjectName|escape }}</h3>
+            <h3>{{ project.fullProjectName }}</h3>
             <div class="panel panel-default">
                 <div>
                     <a target="_blank" href="https://github.com/nfqakademija/{{ project.sortName|url_encode }}">github.com/nfqakademija/{{ project.sortName }}</a>

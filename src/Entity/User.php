@@ -1,11 +1,9 @@
 <?php
-
 namespace App\Entity;
-
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
-
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
@@ -18,40 +16,33 @@ class User implements UserInterface
      * @ORM\Column(type="integer")
      */
     private $id;
-
     /**
      * @ORM\Column(type="string", length=180, unique=true)
      */
     private $email;
-
     /**
      * @ORM\Column(type="json")
      */
     private $roles = [];
-
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
      */
     private $password;
-
     /**
-     * @var null|\DateTime When password was changed
+     * @var null|DateTime When password was changed
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $passwordChanged = null;
-
     /** @var bool Does plain password was entered */
     private $passwordWasChanged = false;
-
     /**
      * @var null|string Link to Personal Website
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $homepage = "";
-
     /**
-     * @var null|string Link to Personal Website
+     * @var null|string Link to Personal Linkedin
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $linkedin = "";
@@ -60,19 +51,15 @@ class User implements UserInterface
     {
         return $this->id;
     }
-
     public function getEmail(): ?string
     {
         return $this->email;
     }
-
     public function setEmail(string $email): self
     {
         $this->email = $email;
-
         return $this;
     }
-
     /**
      * A visual identifier that represents this user.
      *
@@ -82,7 +69,6 @@ class User implements UserInterface
     {
         return (string)$this->email;
     }
-
     /**
      * @see UserInterface
      */
@@ -91,35 +77,28 @@ class User implements UserInterface
         $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
         $roles[] = 'ROLE_USER';
-
         return array_unique($roles);
     }
-
     public function setRoles(array $roles): self
     {
         $this->roles = $roles;
-
         return $this;
     }
-
     /** Virtual method for EasyAdminBundle */
     public function getPlainPassword(): string
     {
         return ''; // We store passwords hashed, it is impossible to regenerate back
     }
-
-    /** Virtual method for EasyAdminBundle */
+    /** Virtual metFixedhod for EasyAdminBundle */
     public function setPlainPassword($password): self
     {
         if (!$password) {
             return $this; // For usability: Empty password means do not change password
         }
-
         $this->passwordWasChanged = true;
         $hash = password_hash($password, PASSWORD_ARGON2I);
         return $this->setPassword($hash);
     }
-
     /**
      * @return bool
      */
@@ -127,22 +106,18 @@ class User implements UserInterface
     {
         return $this->passwordWasChanged;
     }
-
     /**
      * @see UserInterface
      */
     public function getPassword(): string
     {
-        return (string) $this->password;
+        return (string)$this->password;
     }
-
     public function setPassword(string $password): self
     {
         $this->password = $password;
-
         return $this;
     }
-
     /**
      * @see UserInterface
      */
@@ -150,7 +125,6 @@ class User implements UserInterface
     {
         // not needed when using the "bcrypt" algorithm in security.yaml
     }
-
     /**
      * @see UserInterface
      */
@@ -159,23 +133,20 @@ class User implements UserInterface
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
     }
-
     /**
-     * @return \DateTime|null
+     * @return DateTime|null
      */
-    public function getPasswordChanged(): ?\DateTime
+    public function getPasswordChanged(): ?DateTime
     {
         return $this->passwordChanged;
     }
-
     /**
-     * @param \DateTime|null $passwordChanged
+     * @param DateTime|null $passwordChanged
      */
-    public function setPasswordChanged(?\DateTime $passwordChanged): void
+    public function setPasswordChanged(?DateTime $passwordChanged): void
     {
         $this->passwordChanged = $passwordChanged;
     }
-
     /**
      * @return string|null
      */
@@ -185,26 +156,27 @@ class User implements UserInterface
     }
     /**
      * @param string|null $homepage
+     * @return User
      */
     public function setHomepage(?string $homepage): self
     {
-        $this->homepage = $homepage;
-
+        $this->homepage = $homepage;id
         return $this;
     }
-
     /**
      * @return string|null
      */
-    public function getLinkedin(): ?string
+    public function getLinkedIn(): ?string
     {
         return $this->linkedin;
     }
     /**
      * @param string|null $linkedin
+     * @return User
      */
-    public function setLinkedin(?string $linkedin): void
+    public function setLinkedIn(?string $linkedin): self
     {
         $this->linkedin = $linkedin;
+        return $this;
     }
 }

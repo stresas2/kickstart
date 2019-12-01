@@ -187,6 +187,16 @@ foreach ($files as $file) {
                 "https://twig.symfony.com/doc/3.x/filters/url_encode.html"
             );
         }
+        if (contains($line, 'hw1.nfq2019.online/students.json')) {
+            $actions->error(
+                $path,
+                $nr,
+                $line,
+                "Duomenų failą reikėtų laikyti GitHub'e. Nes tavo sistemos rezultatas priklauso nuo students.json failo. " .
+                "Jei aš kitą semestrą jį pakeisiu – tai tavo sistema suluš?.. " .
+                "Taip pat, jei leisi automatinius testus savo projektui – norėsis, kad visi failai būtų lokaliai (dėl stabilumo ir greičio)"
+            );
+        }
     }
 }
 

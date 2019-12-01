@@ -91,9 +91,19 @@ foreach ($files as $file) {
             $actions->error($path, $nr, $line, "Twig'e visi keliai turėtų naudoti path komandą. https://symfony.com/doc/current/templates.html#linking-to-pages");
         }
         if (contains($line, '|escape') || contains($line, '|e ')) {
-            $actions->warning($path, $nr, $line, "Symfony standartiškai yra įjungęs autoescape, tai papildomai rašyti |escape filtro nereikia. https://symfony.com/doc/4.3/templates.html#output-escaping");
+            $actions->error($path, $nr, $line, "Symfony standartiškai yra įjungęs autoescape, tai papildomai rašyti |escape filtro nereikia. https://symfony.com/doc/4.3/templates.html#output-escaping");
         }
-        
+        if (contains($line, '{% set ')) {
+            $actions->error(
+                $path,
+                $nr,
+                $line,
+                "Symfony karkase speciailiai atskiriama verslo logika (Controller/PHP) ir atvaizdavimas (Twig). " .
+                "Todėl visus sudėtingesnius apskaičiavimus geriau laikyti PHP pusėje, nes PHP kodą yra pogiau automatiškai testuoti 
+                arba derinti (debug) negu iš Twig sugeneruotą kodą. 
+                Realiuose projektuose ši problema taip pat sprendžiama ir su nepriklausomai ištestuojamais https://symfony.com/doc/current/templating/twig_extension.html
+                Namų darbe užtenkta tiesiog perkleti logiką į Controller");
+        }
     }
 }
 

@@ -90,7 +90,7 @@ foreach ($files as $file) {
         if (contains($line, '/student')) {
             $actions->error($path, $nr, $line, "Twig'e visi keliai turėtų naudoti path komandą. https://symfony.com/doc/current/templates.html#linking-to-pages");
         }
-        if (contains($line, '|escape')) {
+        if (contains($line, '|escape') || contains($line, '|e ')) {
             $actions->warning($path, $nr, $line, "Symfony standartiškai yra įjungęs autoescape, tai papildomai rašyti |escape filtro nereikia. https://symfony.com/doc/4.3/templates.html#output-escaping");
         }
         
